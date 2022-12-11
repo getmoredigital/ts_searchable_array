@@ -1,0 +1,14 @@
+{
+	"name": "searchable-array",
+	"version": "0.1.0",
+	"author": "Conrad Brodeur",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"build": "tsc",
+		"test": "vitest"
+	},
+	"devDependencies": {
+		"vitest": "^0.25.6"
+	}
+}
