@@ -1,7 +1,7 @@
-# ts_searchable_array
-An extenable function to filter/search arrays with complex items in typescript/javascript
+# Searchable Array (Typescript)
+An extendable function to filter/search arrays with complex items in typescript/javascript
 
-A learning project for somthing simple I can use and extend in my other projects.
+A learning project for something simple I can use and extend in my other projects.
 
 # Basic Usage
 
