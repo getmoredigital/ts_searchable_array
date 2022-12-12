@@ -2,6 +2,19 @@
 * This is a composable to help filter complex item arrays.
 * */
 
+/*
+* Case-insensitive string method includes for quicker matches
+* */
+function quickIncludes(search: string, term: string): boolean {
+    let found: string[]
+    const regEx = new RegExp(term,"i")
+    //@ts-ignore
+    while(found = regEx.exec(search) !== null){
+        return true
+        break
+    }
+    return false
+}
 
 /*
 * Function takes in a value & search value and returns if the search values matches the value.
@@ -11,7 +24,7 @@ function checkItem<T>(value: T, searchValue: T ): boolean {
         return true
     } else if(typeof searchValue == 'number' && searchValue == value){
         return true
-    } else if(typeof searchValue == 'string' && typeof value == 'string' && value.toLowerCase().includes(searchValue.toLowerCase())){
+    } else if(typeof searchValue == 'string' && typeof value == 'string' && quickIncludes(value,searchValue)){
         return true
     } else if (Array.isArray(value)){
         for (let i = 0; i < value.length; i++){
@@ -211,6 +224,7 @@ export const searchableArray = <Item>(initial?: Item | Item[]) => {
         },
         expand?: string[]
     }
+
     /*
     * This function parses options passed to the filter function.
     * */
