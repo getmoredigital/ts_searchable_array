@@ -1,35 +1,16 @@
 # Searchable Array (Typescript)
-An extendable function to filter/search arrays with complex items in typescript/javascript
+Extended Array with methods for complex item search
 
-A learning project for something simple I can use and extend in my other projects.
+A learning project, currently in process of moving from a functional approach to a class based one.
 
 # Basic Usage
 
 ```tsx
-import { searchableArray } from './file'
+import { SmartArray } from './file'
 
 //create a new array with or without a value
-const array = searchableArray()
-const array = searchableArray({a: 1, b: 1})
-const array = searchableArray([{a: 1, b: 1},{a: 2, b: 2}])
-
-//add items to array
-array.add([a: 2, b: 2])
-
-//you can also map the input
-array.add([c: 3, d: 3],(x) => {return {a: x.c, b: x.d}})
-
-//or the whole array
-array.map((x) => {return {a: x.c, b: x.d}})
-
-//and sort
-array.sort((a,b) => a + b)
-
-//to get all results
-array.entities()
-
-//clear items
-array.clear()
+const array = new SmartArray()
+array.add([{a: 1, b: 2},{a: 2, b: 3}])
 ```
 
 ## Main Feature
@@ -38,34 +19,35 @@ Filter any items
 
 ```tsx
 //Query to filter
-array.filter({a: 5})
+array.smartFilter({a: 5})
 
 //Query with multiple arguments
-array.filter({a: [5,6]})
+array.smartFilter({a: [5,6]})
 
 //Combine search keys (a: 5 && b: 2)
-array.filter({a: 5, b: 2})
+array.smartFilter({a: 5, b: 2})
 
 //Expand a search (e: "hello" || e: "world")
-array.filter({a: ["hello","world"]},{expand: ['b']})
+array.smartFilter({a: ["hello","world"]},{expand: ['b']})
 
 //Exclude results
-array.filter({a: 5},{exclude: {b: 2})
+array.smartFilter({a: 5},{exclude: {b: 2})
 
 //Use with Dates ( items with an f between 2022-12-01 and 2022-12-11 )
-array.filter({f: '2022-12-01/2022-12-11'},{isDate: ['f']})
+array.smartFilter({f: '2022-12-01/2022-12-11'},{isDate: ['f']})
 
 //if you want to console log the loop
-array.config({logLoop: true})
+array.config.logLoop = true
 
 //if you want some performance times
-array.config({timeFilter: true})
+array.config.timeFilter = true
 
 ```
 
 ## Of course this is just a base.
 
-Different projects require unique behavior, which can change array to array. So its easy to extend in-line.
+Just being moved over to the class form...
+Different projects require unique behavior, which can change array to array. So it is easy to extend in-line.
 
 ```tsx
 function myPlugin(options){

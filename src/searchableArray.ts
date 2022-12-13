@@ -212,8 +212,8 @@ export const searchableArray = <Item>(initial?: Item | Item[]) => {
         } else {
             console.warn("No items provided")
         }
-        //option to chain command
-        return self
+
+        return library
     }
 
 
@@ -444,14 +444,18 @@ export const searchableArray = <Item>(initial?: Item | Item[]) => {
     }
 
 
-    return {
-        add: add,
-        filter: filter,
-        entities: getLibrary ?? [],
-        clear: clear,
-        map: map,
-        sort: sort,
-        config: setConfig,
-        fromStore: getStoreValue
-    }
+    //Add Methods
+    //@ts-ignore
+    library.add = add
+    //@ts-ignore
+    library.smartFilter = filter
+    //@ts-ignore
+    library.clear = clear
+    //@ts-ignore
+    library.config = setConfig
+    //@ts-ignore
+    library.getStoreValue = getStoreValue
+
+    //pass reference
+    return library
 }
